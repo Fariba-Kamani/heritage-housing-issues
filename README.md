@@ -70,6 +70,15 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 |YearRemodAdd|Remodel date (same as construction date if no remodelling or additions)|1950 - 2010|
 |SalePrice|Sale Price|34900 - 755000|
 
+## Project Terms & Jargon
+
+- **Client**: The fictional individual (Lydia Doe) who inherited four houses and seeks pricing insights.
+- **Property**: A house located in Ames, Iowa, included in the dataset.
+- **Sale Price**: The amount a house was sold for. This is what we aim to predict.
+- **Attribute (or Feature)**: A characteristic of a house, such as its size, number of bedrooms, or the quality of the kitchen.
+- **Prediction**: An estimate of a house’s sale price based on its attributes.
+
+
 ## Business Requirements
 
 As a good friend, you are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximising the sales price for the inherited properties.
@@ -81,20 +90,56 @@ Although your friend has an excellent understanding of property prices in her ow
 
 ## Hypothesis and how to validate?
 
-* List here your project hypothesis(es) and how you envision validating it (them).
+* H1: Houses with larger above-ground living area (`GrLivArea`) tend to have higher sale prices.
+    * Validate using a scatter plot and correlation coefficient.
+* H2: `Neighborhood` significantly impacts the sale price of houses.
+    * Validate using groupby aggregation and boxplot comparisons.
+* H3: Houses built more recently (after 2000) tend to have higher sale prices.
+    * Validate using a bar plot or time series trend, and compare means.
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 
-* List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+* **Business Requirement 1:** Understand which attributes affect sale price.
+    * Mapped to: Exploratory data analysis (EDA) using visualisations such as correlation heatmaps, scatter plots, boxplots.
+    * Reason: These visualisations reveal patterns and relationships needed for insight and feature selection.
+* **Business Requirement 2:** Predict house sale price.
+    * Mapped to: Regression ML task using algorithms such as Random Forest, XGBoost, or Linear Regression.
+    * Reason: The model can generalise to unseen data and help the client price current and future properties.
 
 ## ML Business Case
 
 * In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+* **Goal:** Predict `SalePrice` (target variable) based on house features (independent variables).
+* **Features:** Selected based on correlation with `SalePrice`, data completeness, and domain relevance.
+* **Learning Method:** Supervised learning, regression.
+* **Model Output:** Predicted sale price as a continuous numeric value.
+* **Success Metric:** R² score ≥ 0.85 on test set, and low MAE/MSE.
+* **Business Value:** Enables informed decision-making when pricing inherited or future properties.
+
 
 ## Dashboard Design
 
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
 * Eventually, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but eventually you needed to use another plot type)
+
+- **Home / Project Summary**
+  - Text summary of the project, user story, business needs
+
+- **Data Visualisation**
+  - Correlation heatmap
+  - Scatter plots (e.g. GrLivArea vs SalePrice)
+  - Boxplots (e.g. Neighborhood vs SalePrice)
+  - Interpretation text under each plot
+
+
+- **Predict Sale Price of Inherited Houses**
+  - Table of four inherited houses
+  - Display predicted prices with clear messages
+
+- **Live Prediction Tool**
+  - Input widgets: Bedrooms, LotArea, OverallQual, etc.
+  - Predict button
+  - Output section showing predicted price
 
 ## Unfixed Bugs
 
